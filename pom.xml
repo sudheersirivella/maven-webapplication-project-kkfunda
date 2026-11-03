@@ -26,7 +26,7 @@
 		<sonar.password>Admin@123456</sonar.password> 
 		-->
 
-		<sonar.login>squ_d9911ae0926f2961285b50bd28abf7eef42f817a</sonar.login>
+		<sonar.login>squ_6f21918fddb95f8d9e37d2d72e25952e017030c1</sonar.login>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
@@ -101,13 +101,13 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>KK FUNDA Releases Nexus Repository</name>
-	      <url>http://16.4.140.223:8081/repository/jio-release</url>
+	      <url>http://15.252.100.213:8081/repository/jio-release</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>KK FUNDA Snapshot Nexus Repository </name>
-	      <url>http://16.4.140.223:8081/repository/jio-snapshot/</url>
+	      <url>http://15.252.100.213:8081/repository/jio-snapshot</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
