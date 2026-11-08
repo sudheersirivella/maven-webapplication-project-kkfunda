@@ -26,7 +26,7 @@
 		<sonar.password>Admin@123456</sonar.password> 
 		-->
 
-		<sonar.login>squ_f5f8a8da6283e923fbf3ec82da56c87f8849638f</sonar.login>
+		<sonar.login>sqa_80b7919dc60e5671d85915a325c1c4a0565283db</sonar.login>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
