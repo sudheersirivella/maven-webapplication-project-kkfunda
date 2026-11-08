@@ -46,7 +46,7 @@
 <body>
 
 <header>
-     <h1> HELLO ALL WELCOME TO SUDHEER DEVOPS COURSE...</h1>     
+     <h1> HELLO ALL WELCOME TO SUDHEER Devops with azure...</h1>     
     <h3>Training | Development | Consulting</h3>
 </header>
 
