@@ -57,7 +57,7 @@ stage('Deploy To Tomcat')
       {
         sh """
       curl -u admin:admin \
---upload-file /var/lib/jenkins/workspace/MBPL_JIOPROJECT_BY_SUDHEER/target/maven-web-application.war \
+--upload-file /var/lib/jenkins/workspace/mbpl_jioproject_master/target/maven-web-application.war \
 "http://13.233.104.217:8080/manager/text/deploy?path=/maven-web-application&update=true"
         """  
       }
