@@ -1,21 +1,23 @@
-
 pipeline 
 {
   agent any
   tools
   {
-    maven "maven-3.9.16"
+    maven "maven-3.9.6"
   }
+
+
   stages
   {
+
     stage('git checkout')
     {
       steps
       {
-      notifyBuild('STARTED')
-      git branch: 'master', url: 'https://github.com/kkdevopsb10/maven-webapplication-project-kkfunda.git'
+      git branch: 'master', url: 'https://github.com/sudheersirivella/maven-webapplication-project-kkfunda'
       }
     }
+
     stage('COMPILE')
     {
       steps
@@ -23,6 +25,7 @@ pipeline
         sh "mvn compile"
       }
     }
+
    stage('Build')
     {
       steps
@@ -30,6 +33,7 @@ pipeline
         sh "mvn clean package"
       }
     }
+
     stage('SQ Report')
     {
       steps
@@ -37,6 +41,8 @@ pipeline
         sh "mvn sonar:sonar"
       }
     }
+
+
    stage('Articat Backup')
     {
       steps
@@ -44,73 +50,23 @@ pipeline
         sh "mvn deploy"
       }
     }
-   stage('Deploy To Tomcat')
+
+stage('Deploy To Tomcat')
     {
       steps
       {
         sh """
-
-      curl -u kk:password \
---upload-file /var/lib/jenkins/workspace/Declarative-PL-webapp/target/maven-web-application.war \
-"http://13.235.76.166:8080/manager/text/deploy?path=/maven-web-application&update=true"
-          
-        """
-      }
-    }
-    stage('airtel-dev')
-    {
-      steps
-      {
-         build job: 'airtel-dev'
+      curl -u admin:admin \
+--upload-file /var/lib/jenkins/workspace/MBPL_JIOPROJECT_BY_SUDHEER/target/maven-web-application.war \
+"http://13.233.104.217:8080/manager/text/deploy?path=/maven-web-application&update=true"
+        """  
       }
     }
 
+
+   
 
 
   } //stages ending
-
-post {
-  success {
-
-    script
-    {
-     notifyBuild(currentBuild.result)
-    }
-    
-  }
-  failure {
-
-  script
-  {
-    notifyBuild(currentBuild.result)
-
-  }
-   
-  }
-}
     
 } //pipeline ending
-
-// Notification method
-def notifyBuild(String buildStatus = 'STARTED') {
-    buildStatus = buildStatus ?: 'SUCCESS'
-
-    def colorCode
-    def subject = "${buildStatus}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'"
-    def summary = "${subject} (${env.BUILD_URL})"
-
-    switch (buildStatus) {
-        case 'STARTED':
-            colorCode = '#FFFF00' // Yellow
-            break
-        case 'SUCCESS':
-            colorCode = '#00FF00' // Green
-            break
-        default:
-            colorCode = '#FF0000' // Red
-    }
-
-    slackSend(color: colorCode, message: summary, channel: '#airtel-project')
-}
-
-
